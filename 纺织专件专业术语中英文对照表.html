@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中英文对照专业术语清单</title>
+  <style>
+    :root {
+      --ink: #1d2733;
+      --muted: #647080;
+      --line: #d9e0e7;
+      --bg: #f6f8fa;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-soft: #e4f4f1;
+      --tag: #eef2f6;
+      --warn: #8a5b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(135deg, #0f766e, #23395d);
+      color: #fff;
+      padding: 34px 24px 28px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    h1 { margin: 0 0 10px; font-size: 30px; letter-spacing: 0; }
+    .subtitle { max-width: 850px; margin: 0; color: rgba(255,255,255,.86); }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(246,248,250,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      padding: 14px 24px;
+    }
+    .tools {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+    }
+    input[type="search"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      font-size: 15px;
+      background: #fff;
+      color: var(--ink);
+    }
+    .count { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    main { padding: 24px; }
+    .note {
+      background: #fff8e6;
+      border: 1px solid #f3d58b;
+      color: var(--warn);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 7px 11px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .chip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 0 0 18px;
+      overflow: hidden;
+    }
+    h2 {
+      margin: 0;
+      padding: 14px 16px;
+      background: #edf3f2;
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      word-break: break-word;
+    }
+    th {
+      background: #f8fafb;
+      text-align: left;
+      color: #435061;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: 0; }
+    td.en { font-weight: 650; color: #162232; }
+    td.cn { color: #1c3b36; }
+    td.note-cell { color: var(--muted); font-size: 14px; }
+    .tag {
+      display: inline-block;
+      background: var(--tag);
+      color: #485466;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 12px;
+      margin-left: 6px;
+      vertical-align: 1px;
+    }
+    .hidden { display: none; }
+    footer { color: var(--muted); font-size: 13px; padding: 4px 0 28px; }
+    @media (max-width: 760px) {
+      h1 { font-size: 24px; }
+      .tools { grid-template-columns: 1fr; }
+      table, thead, tbody, tr, th, td { display: block; width: 100%; }
+      thead { display: none; }
+      tr { border-bottom: 1px solid var(--line); }
+      tr:last-child { border-bottom: 0; }
+      td { border-bottom: 0; padding: 7px 12px; }
+      td::before {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      td.en::before { content: "English"; }
+      td.cn::before { content: "中文"; }
+      td.note-cell::before { content: "学习提示"; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>中英文对照专业术语清单</h1>
+      <p class="subtitle">根据当前文件夹内 Graf 与 Groz-Beckert 纺纱针布、梳理、HYPERTOP 与短纤应用资料整理，优先采用中英文对应 PDF 中可互相印证的译法。</p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="wrap tools">
+      <input id="q" type="search" placeholder="搜索英文、中文或缩写，例如 licker-in、刺辊、IPI、PPSI">
+      <div class="count"><span id="shown">0</span> / <span id="total">0</span> 条</div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="note">说明：同一英文在不同厂家和上下文会有细微译法差异，例如 clothing 可译为针布，flat/top 可指盖板或盖板针布；working angle 在 Graf 参数中常译为前角，在 Groz-Beckert 参数中译为工作角。</div>
+    <div id="chips" class="chips"></div>
+    <div id="content"></div>
+    <footer>Markdown 原文已保存在 converted_md 文件夹；MarkItDown 工具仓库已克隆在 markitdown 文件夹。</footer>
+  </main>
+
+  <script>
+    const groups = [
+      {
+        name: "梳理与机器部件",
+        terms: [
+          ["Carding", "梳理", "纤维开松、除杂、伸直和平行化的核心工序。"],
+          ["Carding machine / Card", "梳棉机", "资料中 card 常直接指梳棉机。"],
+          ["Revolving flat card", "梳棉机 / 回转盖板梳棉机", "Groz-Beckert 英文原文常用 revolving flat card，中文资料多简写为梳棉机。"],
+          ["Card components", "梳棉机专件", "用于梳棉机上的关键工作部件。"],
+          ["Spinning Components", "纺纱专件", "Groz-Beckert 产品部名称，覆盖梳理工具和服务。"],
+          ["Clothing for spinning", "纺纱针布", "Graf 主册标题用语。"],
+          ["Card clothing", "针布 / 梳棉机针布", "总称，可覆盖金属针布、盖板针布等。"],
+          ["Card clothing range", "产品阵容", "Groz-Beckert 资料中指短纤梳理针布产品范围。"],
+          ["Metallic card clothing", "金属针布", "梳棉机锡林、道夫、刺辊等金属针布。"],
+          ["Carding wire", "梳棉机针布 / 梳理钢丝", "产品文案里常译为梳棉机针布。"],
+          ["Cylinder", "锡林", "梳棉机主梳理滚筒。"],
+          ["Cylinder wire / Cylinder clothing", "锡林针布", "承接刺辊纤维并与盖板完成主梳理。"],
+          ["Licker-in", "刺辊", "负责开松纤维层并把纤维输送到锡林。"],
+          ["Licker-in wire / Licker-in clothing", "刺辊针布", "刺辊上的金属针布。"],
+          ["Doffer", "道夫", "从锡林转移纤维的部件。"],
+          ["Doffer wire / Doffer clothing", "道夫针布", "决定从锡林到道夫的纤维转移平稳性。"],
+          ["Flexible flats", "弹性盖板 / 盖板针布", "机器部件中可译盖板针布，章节标题常译弹性盖板。"],
+          ["Flexible flat clothing", "弹性盖板针布", "resist-O-top、PRIMATOP、HYPERTOP 等属于此类。"],
+          ["Flat clothing", "盖板针布", "帮助减少短纤维、杂质和棉结。"],
+          ["Revolving tops", "活动盖板针布", "Groz-Beckert 用语，功能接近 Graf 资料中的弹性盖板针布。"],
+          ["Revolving top area", "回转盖板区域", "固定盖板先开松纤维簇，避免回转盖板区域负荷过重。"],
+          ["Stationary flats", "固定盖板", "用于预开松、预梳理和后梳理区域。"],
+          ["Stationary flat clothing", "固定盖板针布", "固定盖板上的针布。"],
+          ["Feed roller wire", "喂入辊针布 / 喂棉罗拉针布", "不同资料中译法略有差异，Graf 图中偏喂棉罗拉针布，Groz-Beckert 中偏喂入辊针布。"],
+          ["Feed roller", "喂入辊", "Groz-Beckert 其他针布页中的 feed roller。"],
+          ["Take-off roller wire", "剥棉罗拉针布", "用于纤维转移和剥取。"],
+          ["Stripping roller wire", "剥离辊针布", "Groz-Beckert ancillary wires 中的术语。"],
+          ["Take-off clearer brush roller / fillet", "剥棉罗拉清洁针布", "用于清洁剥棉罗拉。"],
+          ["Fillets for flat stripping and cleaning roller", "清洁辊针布", "用于盖板剥棉和清洁。"],
+          ["Ancillary wires", "其他针布", "包括剥离辊针布、喂入辊针布等辅助针布。"],
+          ["Chute feeder wire", "棉箱喂棉针布", "喂棉系统相关针布。"],
+          ["Pre-opening", "预开松", "进入主梳理前的初步开松。"],
+          ["Pre-opening zone", "预开松区", "固定盖板改善纤维开松的区域。"],
+          ["Pre-carding zone", "预梳理区", "通常位于刺辊上方。"],
+          ["Post-carding zone", "后梳理区", "通常位于道夫上方。"],
+          ["Carding segments", "梳理单元", "开清棉或固定盖板相关语境中使用。"],
+          ["Blowroom", "清花设备 / 开清棉", "开松、混合、除杂的前纺设备区域。"],
+          ["Clothing for blowroom", "清花设备针布", "主册中专门章节名称。"],
+          ["Blowroom wires for openers and cleaners", "用于开松和清洁的开清针布", "用于将压缩纤维开松成纤维簇并除杂。"],
+          ["OE opening roller", "气流纺(OE)开松辊", "OE 转杯纺开松部件。"],
+          ["Clothing for OE opening rollers", "气流纺(OE)开松辊针布", "适用于 OE 开松辊的金属针布。"]
+        ]
+      },
+      {
+        name: "纺纱工艺与纤维原料",
+        terms: [
+          ["OE / Rotor spinning", "气流纺 / 转杯纺", "资料中 OE/Rotor 对应气流纺。"],
+          ["Ring yarn / Ring spinning", "环锭纱 / 环锭纺", "Ne 纱支应用表中常见。"],
+          ["Carded ring yarn", "普梳环锭纱 / 普梳环锭纺", "未经精梳的环锭纺应用。"],
+          ["Combed ring yarn", "精梳环锭纱 / 精梳环锭纺", "对纤维平行度与质量要求更高。"],
+          ["Air-Jet", "涡流纺", "Graf 中文资料将 Air-Jet 译为涡流纺。"],
+          ["Carded", "普梳", "应用类型。"],
+          ["Combed", "精梳", "应用类型。"],
+          ["Combing machine", "精梳机", "Graf 也供应精梳机梳针。"],
+          ["Nonwovens", "无纺布", "Graf 服务的生产领域之一。"],
+          ["Sliver", "生条 / 棉条", "sliver quality 多译生条质量；棉纱页也出现棉条质量。"],
+          ["Card sliver", "生条", "Groz-Beckert 维护计划以生条质量为判断基础。"],
+          ["Web", "纤网", "梳理后形成的薄薄纤维网。"],
+          ["Yarn", "纱线", "最终产品或质量评价对象。"],
+          ["Yarn count", "纱支", "Ne 8 到 Ne 150 等表达的是纱支范围。"],
+          ["Ne", "英支", "棉纺常用纱支单位。"],
+          ["Coarse yarn", "粗支纱", "如 Ne 8 或 < Ne 24。"],
+          ["Fine yarn count", "细支纱", "资料中与 IPI 改善相关。"],
+          ["Extra fine yarn count", "超细支纱", "如最高可到 Ne 150。"],
+          ["Short-staple fibers", "短纤维 / 短纤", "梳理和短纤纺纱语境。"],
+          ["Short fibers", "短纤维", "盖板针布用于减少短纤维和废料。"],
+          ["Long staple cotton", "长绒棉", "刺辊针布应用条件之一。"],
+          ["Cotton", "棉", "主要原料。"],
+          ["Cotton blends", "棉混纺 / 混纺棉", "cotton and blends 常译棉及其混纺。"],
+          ["Man-made fibers", "人造纤维", "涵盖涤纶、粘胶等。"],
+          ["Regenerated fibers", "再生纤维", "资料中与棉、人造纤维并列。"],
+          ["Recycled fibers / Recycling", "再生纤维", "盖板应用表中 R-range 用于 recycling。"],
+          ["Polyester", "涤纶", "人造纤维应用表中的常见原料。"],
+          ["Viscose", "粘胶", "人造纤维应用表中的常见原料。"],
+          ["Synthetic fibers", "合成纤维", "MULTISHARP 强调适合磨蚀性合成纤维。"],
+          ["Abrasive synthetic fibers", "磨蚀性合成纤维", "对耐磨合金寿命要求高。"],
+          ["Bleached cotton", "漂白棉", "PDI 等盖板针布应用原料。"],
+          ["Flax / Linen", "亚麻", "PDI 应用原料。"],
+          ["Kevlar / Nomex", "Kevlar / Nomex 纤维", "高性能纤维，中文资料保留英文名。"],
+          ["Fiber tufts", "纤维簇", "开清棉中压缩纤维被开松后形成。"],
+          ["Fiber batt", "喂入的纤维团 / 纤维层", "刺辊针布负责开松 fiber batt。"],
+          ["Individual fibers", "单根纤维", "针布将纤维簇分离直至单根纤维。"],
+          ["Unopened flakes", "未开松的棉簇", "固定盖板用于防止其进入预梳理区造成问题。"],
+          ["Trash", "杂质", "纺纱原料中的杂质。"],
+          ["Waste", "落棉 / 废料", "不同语境可译落棉或废料。"],
+          ["Dust", "灰尘", "清花除杂对象之一。"],
+          ["Seed-coat fragments", "棉籽壳碎屑", "针布防充塞和清洁相关高频词。"],
+          ["Contamination", "污染", "新品页中 fiber loss and contamination。"],
+          ["Trash content", "含杂量 / 含杂率", "如含杂量超过 8%。"],
+          ["High trash cotton", "高含杂棉", "可通过合适针布组合处理。"]
+        ]
+      },
+      {
+        name: "质量、效率与性能指标",
+        terms: [
+          ["Sliver quality", "生条质量", "梳理效果的核心指标之一。"],
+          ["Consistent sliver quality", "稳定的生条质量", "Graf 金属针布卖点。"],
+          ["Sliver evenness", "生条均匀度", "新品页中 doffer wire 的改进目标之一。"],
+          ["Yarn quality", "纱线质量", "纺纱最终质量指标。"],
+          ["Yarn IPI values", "纱线 IPI 值", "IPI 表示纱线疵点综合指标。"],
+          ["Imperfections", "纱疵", "细支纱纱疵可降低多达 15%。"],
+          ["Neps", "棉结", "盖板针布有助于减少或去除棉结。"],
+          ["Nep removal", "棉结去除", "HYPERTOP 除杂区功能之一。"],
+          ["Fiber parallelization", "纤维平行度", "改善后可减少细支纱纱疵。"],
+          ["Fiber opening", "纤维开松", "刺辊、固定盖板和开清针布共同关注。"],
+          ["Fiber dispersion", "纤维分散", "HYPERTOP 纤维进入区功能之一。"],
+          ["Fiber control", "纤维控制", "HYPERTOP 和 resist-O-top C-56/1-5 的卖点。"],
+          ["Fiber transfer", "纤维转移", "道夫针布和新品道夫设计的核心任务。"],
+          ["Transfer ratio", "转移比例", "道夫针布指标，影响最佳梳理结果。"],
+          ["Uniform transfer", "均匀传递", "道夫针布需要保证纤维均匀从锡林转移。"],
+          ["Fiber take-up", "纤维抓取 / 纤维接取", "道夫从锡林上抓取纤维的动作。"],
+          ["Fiber cohesion", "纤维握持力 / 纤维凝聚力", "带横纹道夫针布可提高，尤其适合高速合成纤维。"],
+          ["Fiber retention", "纤维保留", "HYPERTOP 提高产出但不损害纱线质量。"],
+          ["Fiber loss", "纤维损耗", "新品道夫针布强调减少良好纤维损耗。"],
+          ["Good fiber savings", "良好纤维节约", "HYPERTOP 宣称最高可达 +0.5%。"],
+          ["Good fiber yield", "良纤产出率", "与 raw material saving、fiber yield 相关。"],
+          ["Raw material yield", "原料制成率 / 原材料产出", "影响整体纱线成本。"],
+          ["Raw material utilization", "原料利用率", "清花设备针布卖点。"],
+          ["Raw material saving", "原料节约", "HYPERTOP 图示中的概念。"],
+          ["Impurity separation", "杂质分离 / 落杂分离", "HYPERTOP 除杂区和固定盖板功能。"],
+          ["Process stability", "工艺稳定性", "金属针布核心卖点。"],
+          ["Production rate", "产量 / 生产率", "如 < 50 kg/h 与 > 50 kg/h。"],
+          ["Production output", "产量水平", "Groz-Beckert 钢材选择会按低产量、中高产量和高产量区分。"],
+          ["Card throughput", "梳棉机产量 / 通过量", "新品页中 higher card throughput。"],
+          ["Throughput", "纤维处理量 / 通过量", "Groz-Beckert 中文资料多译为纤维处理量。"],
+          ["Lifetime", "使用寿命", "合金和针布设计的关键指标。"],
+          ["Service life", "使用寿命", "Groz-Beckert 资料中 service life 与 lifetime 同义。"],
+          ["Service life potential", "潜在使用寿命", "维护得当才能充分利用针布潜在寿命。"],
+          ["Availability", "可用性", "清洁系统可确保梳棉机具有很高可用性。"],
+          ["Downtime", "停机时间", "维护、换针布和 EasyTop 关注点。"],
+          ["Uptime", "正常运行时间", "清洁系统和清花针布卖点。"],
+          ["Maintenance", "维护 / 保养", "维护可延长针布寿命。"],
+          ["Wear", "磨损", "产量高或原料质量差会增加针布磨损。"],
+          ["Wear pattern", "磨损情况 / 磨损形态", "决定修磨时机和修磨程度。"],
+          ["Stress on the card clothing", "针布负荷", "刺辊和固定盖板及时更换可减轻锡林和活动盖板负荷。"],
+          ["Grinding", "研磨 / 磨削 / 修磨", "TUCAN 主打无需研磨；维护套件中常译修磨。"],
+          ["Resharpening", "修磨", "Groz-Beckert 维护章节中的核心动作。"],
+          ["Replacement", "更换", "刺辊和固定盖板针布通常不能修磨，需要及时更换。"],
+          ["Volume based maintenance", "以处理量为准的维护", "按纤维处理量安排维护。"],
+          ["Quality based maintenance", "以质量为准的维护", "当生条棉结和纱线指标达不到要求时安排维护。"],
+          ["Acceptance and intervention limit", "允许和干预下限", "维护曲线中的质量判断边界。"],
+          ["Quality level", "质量水平", "例如棉结清除情况。"],
+          ["Grinding-free", "无需研磨", "TUCAN 处理 1100 吨内无需研磨。"],
+          ["Payback", "投资回收 / 回本", "HYPERTOP 可在典型条件下一年内回本。"],
+          ["ROI", "投资回报", "HYPERTOP 案例中的财务指标。"]
+        ]
+      },
+      {
+        name: "针布结构、参数与表面处理",
+        terms: [
+          ["Clothing height / Tooth height", "针齿高度", "如 1.9 mm、2.0 mm、2.5 mm。"],
+          ["Working angle", "前角 / 工作角度", "参数表中多译前角；工艺描述可译工作角度。"],
+          ["Angle", "工作角", "Groz-Beckert 参数表中 Angle 对应工作角。"],
+          ["Front angle", "前角", "刺辊针布应用描述中 front angle 由应用和纤维类型决定。"],
+          ["Tooth pitch", "齿距", "识别码中的参数。"],
+          ["Base width", "针齿基厚 / 基厚", "用于计算 p.p.s.i.。"],
+          ["Rib", "基厚", "Groz-Beckert 参数表中 Rib 对应中文基厚。"],
+          ["Tooth shape", "齿形", "识别码中的关键字段。"],
+          ["Tooth geometry", "齿型 / 齿形几何结构", "HYPERTOP、道夫新品卖点。"],
+          ["Optimized tooth geometry", "优化齿型 / 优化齿形几何结构", "用于提升纤维控制和转移。"],
+          ["Standard profiles", "标准齿型", "金属针布识别码中的分类。"],
+          ["Standard wires", "标准针布", "Groz-Beckert 锡林针布分类。"],
+          ["Special wires", "特殊针布", "采用专利齿形设计的高性能锡林针布。"],
+          ["Interlinked profiles", "自锁齿型", "对应 interlinked clothing。"],
+          ["Interlinked clothing", "自锁针布", "刺辊针布高度表中出现。"],
+          ["Interlocking / Interlocked", "自锁型", "Groz-Beckert 用于刺辊针布、开清针布、喂入辊针布。"],
+          ["Groove-wound clothing", "沟槽针布", "与自锁针布并列。"],
+          ["Grooved roller", "沟槽辊", "老式梳棉机仍会使用带沟槽的刺辊。"],
+          ["Grooved licker-in", "带沟槽的刺辊", "对应 grooved licker-ins。"],
+          ["Plain rib", "非自锁型 / 非自锁针布", "Groz-Beckert 开清针布和喂入辊针布分类。"],
+          ["Arched tooth shape", "圆弧齿形", "代码 B。"],
+          ["Camel", "驼峰齿形", "代码 C。"],
+          ["Flat tooth", "扁平齿形", "代码 F。"],
+          ["Beak-shaped tooth", "鹰嘴齿形", "代码 G。"],
+          ["Morel", "平顶齿形", "代码 M。"],
+          ["Special cut depth", "深弧纹齿形", "代码 S。"],
+          ["Licker-in profile", "刺辊齿形", "代码 V。"],
+          ["Execution with humps", "驼背齿形", "代码 W。"],
+          ["Serrated profile", "齿侧横纹", "代码 SER。"],
+          ["Clothing with serration", "针齿带有齿侧横纹", "用于低粘附性纤维。"],
+          ["Striations", "横纹", "道夫针布中的横纹可提高纤维握持力。"],
+          ["No. of striations", "横纹数量", "道夫针布参数表字段。"],
+          ["Curved doffers", "弧形齿道夫针布", "用于改善纤维从锡林到道夫的转移。"],
+          ["Curved tooth design", "弧形齿设计", "便于纤维转移和纤网从道夫剥离。"],
+          ["Straight tooth design", "直齿设计", "刺辊针布可有弯齿和直齿两种设计。"],
+          ["Points per square inch (p.p.s.i.)", "每平方英寸齿尖密度 / 齿密", "盖板、固定盖板和识别码表常见。"],
+          ["PPSI", "齿密 / PPSI", "例如 RSTO C-60 为 600 p.p.s.i.。"],
+          ["Threads per inch", "圈数/英寸", "自锁齿型识别码参数。"],
+          ["Coil size", "卷装重量", "识别码末尾如 45 kg。"],
+          ["Surface treatment", "表面处理", "BLH、BLD、NF、POL 等。"],
+          ["Clean Bright Finish (CBF)", "光亮处理", "Groz-Beckert 道夫针布可选表面规格，可改善纤维控制并减少挂花。"],
+          ["F4 Plattinium finish", "F4 Plattinium 表面规格", "剥离辊针布标准表面规格，便于纤维顺利释放。"],
+          ["Nickel-plated", "镀镍", "Groz-Beckert 清洁针布标配镀镍，耐腐蚀且耐磨。"],
+          ["Blank hardened (BLH)", "无氧化加硬处理", "中文资料也写无氧化处理。"],
+          ["Blank disc polished (BLD)", "抛光处理", "机械抛光处理。"],
+          ["Needle finish (NF)", "电解处理 / 表面电解处理", "电解抛光并圆整针齿边缘。"],
+          ["Polidur treatment (POL)", "化学处理", "通过化学抛光改善表面质量。"],
+          ["Alloy", "合金钢", "针布材料类别。"],
+          ["Steel quality", "钢材 / 钢材规格", "Groz-Beckert 用 Super、Duratech、Ultra 区分钢材等级。"],
+          ["Carbon steel", "碳钢", "Super 是一种特殊碳钢。"],
+          ["Micro-alloyed steel", "微合金钢", "Duratech 是一种微合金钢。"],
+          ["Wear-resistant alloy", "耐磨合金钢", "MULTISHARP 的定位。"],
+          ["Wear resistance", "抗磨损性", "Ultra 和 Duratech 均强调更高抗磨损性。"],
+          ["MULTISHARP (MS)", "MULTISHARP 耐磨合金钢", "适合磨蚀性合成纤维，寿命更长。"],
+          ["CUTTYSHARP (CS)", "CUTTYSHARP 合金钢", "高产锡林针布常用。"],
+          ["HIGH TECH (HT)", "HIGH TECH 合金钢", "适用于较低产量梳棉机。"],
+          ["Super", "Super 钢", "Groz-Beckert 特殊碳钢，用于锡林、道夫和非自锁型刺辊针布。"],
+          ["Duratech", "Duratech 钢", "Groz-Beckert 微合金钢，适用于中高产量和高要求应用。"],
+          ["Ultra", "Ultra 钢", "Groz-Beckert 最高等级钢材，适合现代梳棉机和高产量应用。"]
+        ]
+      },
+      {
+        name: "盖板、换针布与维护工具",
+        terms: [
+          ["resist-O-top (RSTO)", "resist-O-top 弹性盖板针布", "C-range、M-range、R-range 分别用于棉、人造纤维、再生纤维。"],
+          ["C-range", "C系列", "适用于棉和混纺。"],
+          ["M-range", "M系列", "适用于人造纤维和混纺。"],
+          ["R-range", "R系列", "适用于再生纤维。"],
+          ["PRIMATOP (PRT)", "PRIMATOP 弹性盖板针布", "用于棉和人造纤维。"],
+          ["InLine-X-Top (ILXT)", "InLine-X-Top 弹性盖板针布", "也有 EasyTop 版本。"],
+          ["PICCO DIAMANT (PDI)", "PICCO DIAMANT 半刚性盖板针布", "用于再生纤维、漂白棉、亚麻、Kevlar/Nomex。"],
+          ["Semi-rigid flat clothing", "半刚性盖板针布", "PDI 属于此类。"],
+          ["Progressive setting pattern", "渐进式排列 / 渐进式植针", "有利于去除短纤维、杂质和棉结。"],
+          ["Multi-zone setting pattern", "多区植针方式", "HYPERTOP 专利设计。"],
+          ["Free passage", "自由穿行", "盖板植针方式影响纤维通道。"],
+          ["Carding forces", "梳理力度 / 梳理力", "盖板植针影响梳理力分配。"],
+          ["Foundation", "盖板基布 / 盖板基础层", "活动盖板针齿嵌入其中，既支撑针齿又提供弹性。"],
+          ["Colored foundation", "彩色基布", "Groz-Beckert 活动盖板使用适合高速梳理的彩色基布。"],
+          ["Setting pattern", "植针形式 / 植针排列", "活动盖板要求坚固、均匀的植针形式。"],
+          ["Single density tops", "均密型盖板", "活动盖板针布分类。"],
+          ["Variable density tops", "渐密型盖板", "活动盖板针布分类。"],
+          ["Semi-rigid range", "半刚性活动盖板针布", "Groz-Beckert 活动盖板产品分类。"],
+          ["Side-grinding", "针齿侧磨", "用于形成最佳齿尖几何形状。"],
+          ["Backing-off", "倒锥加工", "与侧磨一起保证齿尖几何形状。"],
+          ["Extra hardened points", "额外硬化的齿尖", "用于延长齿尖质量和寿命。"],
+          ["Height deviation", "高度偏差", "计算机辅助高度监控可减少偏差。"],
+          ["Computer-assisted height monitoring", "计算机辅助高度监控", "活动盖板质量保证手段。"],
+          ["EasyTop", "磁性盖板 EasyTop", "通过磁粘附技术快速更换盖板针布。"],
+          ["Magnetic adhesion technology", "磁粘附技术", "EasyTop 的核心固定方式。"],
+          ["Magnetic attachment", "磁性吸附 / 磁粘附固定", "图示中 EasyTop with magnetic attachment。"],
+          ["Flat bar", "盖板骨", "EasyTop 安装载体。"],
+          ["Aluminum flat bar", "铝质盖板骨", "EasyTop 适用对象。"],
+          ["Adhesive and compensation layer", "吸附和补偿层", "EasyTop 结构层。"],
+          ["Magnet", "磁体", "EasyTop 结构件。"],
+          ["Metal carrier", "金属座", "EasyTop 结构件。"],
+          ["Reclothing", "更换针布 / 重新包覆", "EasyTop 语境多为更换针布，维护套件中为重新包覆。"],
+          ["Stripping", "拆除 / 剥棉", "换针布语境为拆除；stripping fillet 为剥棉针布。"],
+          ["Clipping / Clips", "包覆 / 边条固定", "传统盖板固定方式。"],
+          ["Flat workshop", "盖板维护车间", "EasyTop 可减少对专门车间的依赖。"],
+          ["Carding gap", "梳理隔距", "影响 IPI 和纱线品质。"],
+          ["Setting gauge", "隔距片", "用于精确设置梳理隔距。"],
+          ["Single flat gauge", "盖板隔距片", "辅助件之一。"],
+          ["Eight-blade gauges", "八页隔距片", "辅助件之一。"],
+          ["Cleaning fillets", "清洁针布", "用于保持罗拉和盖板清洁。"],
+          ["Top cleaning fillet", "盖板清洁针布", "Groz-Beckert 清洁针布分类。"],
+          ["Low-speed top cleaning fillet", "低速盖板清洁针布", "清除活动盖板上的盖板花。"],
+          ["High-speed top cleaning fillet", "高速盖板清洁针布", "将短纤维、杂质和灰尘转移到抽吸系统。"],
+          ["Doffer cleaning fillet", "道夫清洁针布", "启动时保护道夫针布，防止不受控纤维造成损坏。"],
+          ["Top cleaning strips", "盖板清洁条", "可根据梳棉机类型作为替代方案。"],
+          ["Flat strips", "盖板花", "活动盖板清洁过程中被清除的纤维杂质。"],
+          ["Carding extraction system", "梳棉机抽吸系统", "用于接收清洁针布转移出的短纤维、杂质和灰尘。"],
+          ["Passive (negative) angle", "被动（负）角度", "高速盖板清洁针布的角度设计。"],
+          ["Lapping on the stripping roller", "纤维缠绕在剥取辊上", "道夫清洁针布要避免的风险。"],
+          ["Fiber rolls", "小纤维团", "启动时不受控纤维可能形成的风险。"],
+          ["Spaced flat stripping fillet", "间隔式弯角清洁针布", "对盖板针布负荷较小。"],
+          ["Flat strippers", "剥棉针布", "用于盖板和盖板清洁刷。"],
+          ["Zigzag flat stripping fillets", "齿形弯角清洁针布", "驱动力小、插入盖板效果好。"],
+          ["Service packages", "针布维护套件", "四种套件覆盖包覆、修磨、保养与启动。"],
+          ["Service station", "维护服务站", "Graf 全球服务网络。"],
+          ["Doffer grinding device", "道夫修磨装置", "维护套件设备 ASG。"],
+          ["Flat end milling machine", "踵趾面修磨机", "维护盖板踵趾面。"],
+          ["Hand stripping card", "手动抄针片", "用于清洁和剥除残留。"],
+          ["Carborundum hand grinding stone", "Carborundum 磨石", "手工修磨工具。"],
+          ["Bronze or copper wire brush", "青铜或铜针布刷", "用于清洁新包卷或打磨后的金属针布。"],
+          ["WiFi digital microscope", "无线数字显微镜", "用于针布检查和精确分析。"]
+        ]
+      },
+      {
+        name: "新品与产品名称",
+        terms: [
+          ["HYPERTOP Flexible Flat", "HYPERTOP 弹性盖板针布", "主打最多 +0.5% 良好纤维节约。"],
+          ["HYPERTOP", "HYPERTOP", "可理解为 Higher Yield Pays Extra Returns Through Optimized Pattern。"],
+          ["Fiber Entry Zone", "纤维进入区", "HYPERTOP Zone 1，强调纤维捕获和分散。"],
+          ["Trash Zone", "除杂区", "HYPERTOP Zone 2，强调杂质分离、纤维平行化和棉结去除。"],
+          ["Quality Zone", "质量区", "HYPERTOP Zone 3，强调梳理隔距处的精确纤维控制。"],
+          ["TUCAN Metallic Card Clothing", "TUCAN 梳棉机金属针布", "棉及其混纺 ≤ Ne 60 可在 1100 吨内无需研磨。"],
+          ["Licker-in Wire V J2 50 +10 2 12 CS", "刺辊针布 V J2 50 +10 2 12 CS", "新品折页中的刺辊针布型号。"],
+          ["Stationary Flat in MULTISHARP Alloy", "采用 MULTISHARP 合金的固定盖板", "主打固定盖板寿命最高延长 100%。"],
+          ["resist-O-top C-56/1-5", "resist-O-top C-56/1-5 弹性盖板针布", "用于增强梳理区纤维控制。"],
+          ["Doffer Wire L 50 +30 X0,9 GT BLH", "道夫针布 L 50 +30 X0,9 GT BLH", "新品折页中的道夫针布型号。"],
+          ["Long tooth backbone", "长型齿背", "新品折页中的齿形卖点。"],
+          ["Elongated tip back", "加长齿尖背", "新品折页中的齿形卖点。"],
+          ["Stump tip angle", "齿尖钝角设计", "新品折页中的结构卖点。"],
+          ["Strong wire", "强壮的针齿", "HYPERTOP 卖点之一。"],
+          ["Robust design", "坚固结构设计", "减少停机时间的卖点。"],
+          ["Benchmark study", "基准测试 / 对比试验", "HYPERTOP 案例中用来证明产出提升。"],
+          ["Full machine compatibility", "全机型兼容性", "HYPERTOP 可适配主流梳理系统。"],
+          ["Sustainability gains", "可持续性收益", "减少浪费、优化资源利用。"]
+        ]
+      }
+    ];
+
+    const content = document.getElementById("content");
+    const chips = document.getElementById("chips");
+    const q = document.getElementById("q");
+    const shown = document.getElementById("shown");
+    const total = document.getElementById("total");
+    let activeGroup = "全部";
+
+    function render() {
+      chips.innerHTML = "";
+      ["全部", ...groups.map(g => g.name)].forEach(name => {
+        const btn = document.createElement("button");
+        btn.className = "chip" + (name === activeGroup ? " active" : "");
+        btn.textContent = name;
+        btn.addEventListener("click", () => {
+          activeGroup = name;
+          render();
+        });
+        chips.appendChild(btn);
+      });
+
+      content.innerHTML = "";
+      let totalRows = 0;
+      let visibleRows = 0;
+      const needle = q.value.trim().toLowerCase();
+
+      groups.forEach(group => {
+        const section = document.createElement("section");
+        const h2 = document.createElement("h2");
+        h2.textContent = group.name;
+        const table = document.createElement("table");
+        table.innerHTML = "<thead><tr><th>English</th><th>中文</th><th>学习提示</th></tr></thead><tbody></tbody>";
+        const tbody = table.querySelector("tbody");
+        let groupVisible = 0;
+
+        group.terms.forEach(([en, cn, note]) => {
+          totalRows += 1;
+          const text = `${group.name} ${en} ${cn} ${note}`.toLowerCase();
+          const okGroup = activeGroup === "全部" || activeGroup === group.name;
+          const okSearch = !needle || text.includes(needle);
+          if (!okGroup || !okSearch) return;
+          groupVisible += 1;
+          visibleRows += 1;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td class="en">${escapeHtml(en)}</td><td class="cn">${escapeHtml(cn)}</td><td class="note-cell">${escapeHtml(note)}</td>`;
+          tbody.appendChild(tr);
+        });
+
+        if (groupVisible > 0) {
+          section.appendChild(h2);
+          section.appendChild(table);
+          content.appendChild(section);
+        }
+      });
+
+      total.textContent = totalRows;
+      shown.textContent = visibleRows;
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+      }[char]));
+    }
+
+    q.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
